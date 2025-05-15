@@ -1,0 +1,162 @@
+/* Reset & Base */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #000;
+	color: #fff;
+	font-family: 'Segoe UI', sans-serif;
+	overflow-x: hidden;
+	font-size: 14px;
+}
+
+a {
+	color: #1e90ff;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Canvas Background full screen */
+#bg-canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+}
+
+/* Header */
+.header {
+	background: rgba(0, 0, 0, 0.8);
+	padding: 0.75rem 1rem;
+	position: relative;
+	z-index: 1;
+}
+
+.nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	font-size: 0.9rem;
+}
+
+.nav a {
+	padding: 0.25rem 0.5rem;
+}
+
+/* Main layout compact */
+.main-container {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	max-width: 100%;
+	margin: 1.5rem auto;
+	gap: 1rem;
+	padding: 0 1rem;
+	position: relative;
+	z-index: 1;
+}
+
+/* Adjust these values to control the width of the two panels */
+.sidebar {
+	flex: 1 1 30%;
+	/* <-- Change width % */
+	max-width: 300px;
+	background: rgba(30, 30, 30, 0.95);
+	/* Increased opacity */
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+	padding: 1rem;
+}
+
+.content {
+	flex: 1 1 65%;
+	/* <-- Change width % */
+	background: rgba(30, 30, 30, 0.95);
+	/* Increased opacity */
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+	padding: 1rem;
+	/* max-height: 600px; */
+}
+
+/* Info Card */
+.avatar {
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+	border: 2px solid #1e90ff;
+	margin-bottom: 0.75rem;
+	display: block;
+}
+
+h2 {
+	font-size: 1.25rem;
+	margin-bottom: 0.5rem;
+}
+
+.role {
+	color: #ccc;
+	margin-bottom: 0.75rem;
+	font-size: 0.85rem;
+}
+
+.details {
+	font-size: 0.85rem;
+	color: #aaa;
+	line-height: 1.4;
+}
+
+/* Content */
+.content h1 {
+	font-size: 1.5rem;
+	color: #1e90ff;
+	margin-bottom: 0.75rem;
+}
+
+.content p {
+	margin-bottom: 0.75rem;
+	line-height: 1.5;
+	font-size: 0.9rem;
+}
+
+/* Scroll Top */
+.scroll-top {
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	background: #1e90ff;
+	padding: 0.5rem 0.75rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+	z-index: 1;
+	font-size: 0.8rem;
+}
+
+.scroll-top:hover {
+	background: #63b3ed;
+}
+
+/* Footer */
+.footer {
+	text-align: center;
+	padding: 1rem 0;
+	background: rgba(0, 0, 0, 0.8);
+	margin-top: 1.5rem;
+	font-size: 0.8rem;
+	position: relative;
+	z-index: 1;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+}

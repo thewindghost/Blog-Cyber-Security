@@ -1,0 +1,1 @@
+để giao diện đẹp hãy chọn hình ảnh thêm vào trong posts.json vừa đủ

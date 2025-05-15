@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <link rel="icon" href="/images/favicon.ico" />
+      <title>Security Researcher Blog</title>
+      <link id="themeStylesheet" rel="stylesheet" href="/style/cyber.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+   </head>
+   <body>
+      <!--header-->
+      <header
+         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em; flex-wrap: wrap; gap: 1em;">
+         <nav style="display: flex; gap: 1em; font-weight: bold;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="🇻🇳" width="40" height="30" style="vertical-align: middle;" />
+            <a>TheWindGhost</a>
+            <a href="/profile.html">🧑 Profile</a>
+            <a href="/images/cv-longtruong.pdf" target="_blank">📄 Resume</a>
+            <a href="mailto:longbinhquoitay8@gmail.com">📫 Contact</a>
+            <a href="https://www.linkedin.com/in/thewindghost" target="_blank">💼 Linkedin</a>
+            <a href="https://github.com/thewindghost" target="_blank">🌐 GitHub</a>
+         </nav>
+         <!--chỉnh nút chuyển đổi-->
+         <div style="display: flex; gap: 0.5em;">
+            <!--nút toàn màn hình-->
+            <button id="toggleWidthBtn" style="display: none;">🖥️ Full Screen</button>
+            <!--chỉnh giao diện-->
+            <button onclick="switchTheme('/style/hacker.css')">💻 Hacker Style</button>
+            <button onclick="switchTheme('/style/cyber.css')">🛡 Cyber Security Style</button>
+         </div>
+      </header>
+      <!--ẩn tables of contents-->
+      <div class="site-container">
+         <aside id="toc" style="display: none;">
+            <h2>Table of Contents</h2>
+            <ul></ul>
+         </aside>
+         <!--ẩn post time với markdown content-->
+         <main style="display: none;">
+            <div id="post-time" style="display:none; font-size: 0.9em; color: #888; margin-bottom: 1em;"></div>
+            <div id="markdown-content"></div>
+         </main>
+      </div>
+      <!--chổ chỉnh sửa list-->
+      <div class="section-container">
+         <section>
+            <h2>🛡️ My CVE Reports</h2>
+            <ul id="cve-list"></ul>
+         </section>
+         <section>
+            <h2>🐞 Bug Bounty</h2>
+            <ul id="bugbounty-list"></ul>
+         </section>
+         <section>
+            <h2>🔒 Private Programs</h2>
+            <ul id="privateprogram-list"></ul>
+         </section>
+         <section>
+            <h2>🤝 Direct Collaborations</h2>
+            <ul id="directcollab-list"></ul>
+         </section>
+      </div>
+      <!--con trỏ chạy về đầu post-->
+      <button id="scrollToTop" onclick="scrollToTop()"
+         style="display:none;position:fixed;bottom:20px;right:20px;padding:0.5em 1em;font-size:1em;background:#007acc;color:#fff;border:none;border-radius:5px;cursor:pointer;">
+      ↑ Top
+      </button>
+      <!--Back Về Home-->
+      <button id="backHome" onclick="location.href='/'"
+         style="display:none;position:fixed;bottom:20px;left:20px;padding:0.5em 1em;font-size:1em;background:#444;color:#fff;border:none;border-radius:5px;cursor:pointer;">
+      ← Back Home
+      </button>
+      <!-- footer id của Read More-->
+      <footer id="footer" style="display: none;"></footer>
+      <footer class="site-footer">
+         <p>© 2025 <a href="https://github.com/thewindghost">TheWindGhost</a> <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="🇻🇳" width="30" height="25" style="vertical-align: middle;" /> . All rights reserved.</p>
+         <p>Focused on Bug Bounty, CVEs & Cybersecurity Research.</p>
+      </footer>
+      <!--Script markdown, chỉnh màu python vv...-->
+      <script src="/script/components-index.js"></script>
+      <script src="/script/script-index.js"></script>
+   </body>
+</html>

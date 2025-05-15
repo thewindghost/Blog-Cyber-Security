@@ -1,0 +1,266 @@
+/* === Giao diện chính === */
+
+body {
+	background-color: #f5f7fa;
+	color: #1e2a38;
+	font-family: 'Segoe UI', Roboto, sans-serif;
+	padding: 2em;
+	line-height: 1.6;
+}
+
+a {
+	color: #007acc;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+code {
+	background: #eaeef3;
+	padding: 2px 6px;
+	border-radius: 5px;
+	font-family: 'Courier New', monospace;
+}
+
+pre {
+	background: #eaeef3;
+	padding: 1em;
+	overflow-x: auto;
+	border-left: 4px solid #007acc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #003366;
+	margin-top: 1.5em;
+	border-bottom: 2px solid #ccc;
+	padding-bottom: 0.3em;
+}
+
+blockquote {
+	border-left: 4px solid #007acc;
+	padding-left: 1em;
+	background: #f0f8ff;
+	color: #003366;
+	margin: 1em 0;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 1em;
+}
+
+table,
+th,
+td {
+	border: 1px solid #ccc;
+	padding: 0.5em;
+	text-align: left;
+}
+
+hr {
+	border: none;
+	border-top: 1px dashed #aaa;
+	margin: 2em 0;
+}
+
+/* === Layout chính (nội dung + TOC) === */
+
+.site-container {
+	display: flex;
+	gap: 2em;
+	max-width: 1400px;
+	margin: 2em auto;
+	padding: 0 1em;
+}
+
+main {
+	flex: 1;
+	min-width: 0;
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
+/* === TOC Sidebar (bên trái) === */
+
+#toc {
+	position: sticky;
+	top: 20px;
+	max-height: 90vh;
+	overflow-y: auto;
+	padding-right: 1em;
+	flex-shrink: 0;
+
+	width: 250px;
+	min-width: 200px;
+	max-width: 300px;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	white-space: normal;
+}
+
+#toc h2 {
+	margin-top: 0;
+	font-size: 1.2em;
+}
+
+#toc ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+#toc li {
+	margin: 0.5em 0;
+}
+
+#toc a {
+	display: block;
+	line-height: 1.5em;
+	word-break: break-word;
+}
+
+#toc a:hover {
+	text-decoration: underline;
+}
+
+/* === Vùng nội dung Markdown === */
+
+#markdown-content {
+	background: #fff;
+	padding: 2em;
+	border-radius: 4px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	color: #1e2a38;
+	max-width: 100%;
+}
+
+#markdown-content img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* === Toggle giữa full / normal width === */
+
+#markdown-content.normal-width {
+	max-width: 100%;
+}
+
+#markdown-content.full-width {
+	max-width: none;
+	width: 100%;
+}
+
+
+/* === Danh sách bài viết (li trong ul) === */
+
+ul li a {
+	display: block;
+	padding: 0.75em 1em;
+	margin: 0.5em 0;
+	border-radius: 8px;
+	background-color: #dad0d0;
+	color: #0d47a1;
+	text-decoration: none;
+	font-weight: 500;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	transition: all 0.2s ease;
+}
+
+ul li a:hover {
+	background-color: #e3f2fd;
+	color: #1565c0;
+	text-decoration: none;
+	transform: translateY(-1px);
+}
+
+
+/* === Scroll to Top button === */
+
+#scrollToTop {
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	padding: 0.5em 1em;
+	font-size: 1em;
+	background: #007acc;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#scrollToTop:hover {
+	background: #005f99;
+}
+
+/* === Post time box === */
+
+.post-time {
+	font-size: 0.9em;
+	color: #666;
+	margin-bottom: 0.5em;
+	padding: 0.5em 1em;
+	background: rgba(0, 0, 0, 0.03);
+	border-left: 4px solid #007acc;
+	border-radius: 4px;
+}
+
+/* === Footer === */
+
+.site-footer {
+	text-align: center;
+	font-size: 0.9em;
+	color: #ff6600;
+	margin-top: 4em;
+	padding: 2em 1em 1em;
+}
+
+.site-footer hr {
+	margin-bottom: 1em;
+	border: none;
+	border-top: 1px solid #ccc;
+}
+
+
+/* chỉnh kích thước image ở index.html */
+.post-image {
+	display: block;
+	margin-bottom: 0.75em;
+	/* giới hạn images container có thể vượt qua */
+	max-width: 100%;
+	max-height: 250px;
+	height: auto;
+	width: auto;
+}
+
+/* Highlight background cho section được chọn */
+/* Highlight chỉ tiêu đề h2 */
+.section-container section h2.active-heading {
+	background-color: rgba(255, 223, 93, 0.4);
+	padding: 0.2em 0.4em;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+
+.section-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 0 1em;
+}
+
+.section-container section {
+	margin-bottom: 2em;
+}
+
+#recommendations {
+	margin-bottom: 2rem;
+}
