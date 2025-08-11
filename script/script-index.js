@@ -198,10 +198,10 @@ async function loadMarkdown() {
             .forEach((sec) => (sec.style.display = "block"));
         container.innerHTML = `<p style="color:red;">Không tìm thấy tệp.</p>`;
 
-        // ✂️ Xóa luôn section Read More
+        // Xóa luôn section Read More
         const oldRec2 = document.getElementById("recommendations");
         if (oldRec2) oldRec2.remove();
-        // ✂️ Ẩn <footer id="footer">
+        // Ẩn <footer id="footer">
         document.getElementById("footer").style.display = "none";
     }
 }
@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", scrollHandler);
     window.addEventListener("DOMContentLoaded", loadMarkdown);
 
-    // ✅ Xử lý nút đổi kích thước
+    // Xử lý nút đổi kích thước
     const toggleBtn = document.getElementById("toggleWidthBtn");
     if (toggleBtn) {
         toggleBtn.addEventListener("click", () => {
@@ -385,10 +385,10 @@ function formatCategoryTitle(category) {
 
 function categoryIconFromTitle(category) {
     const icons = {
-        Bug_Bounty: "🐞",
-        CVE: "🛡️",
-        Private_Program: "🔒",
-        Direct_Collaboration: "🤝",
+        Bug_Bounty: "",
+        CVE: "",
+        Private_Program: "",
+        Direct_Collaboration: "",
     };
 
     return icons[category] || ""; // với category mới, trả về ''
@@ -403,7 +403,7 @@ function createCategorySectionAtTop(category) {
 
     // ==========================
     // 1. Chọn icon random từ list
-    const randomIcons = ['💥', '⚡', '🧠', '💻', '🕶️', '⚙️', '🌐', '🚀', '👾', '📡', '🦾'];
+    const randomIcons = ['', '', '', '', '', '', '', '', '', '', ''];
     const randIcon = randomIcons[Math.floor(Math.random() * randomIcons.length)];
 
     // 2. Tạo slug và tiêu đề
@@ -460,7 +460,7 @@ function createCopyLinkIcon(slug) {
 }
 
 
-// ✅ Hàm render chính
+// Hàm render chính
 async function renderPostLists() {
     try {
         const res = await fetch("/posts/posts.json", {
