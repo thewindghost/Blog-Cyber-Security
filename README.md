@@ -18,7 +18,3 @@ This project is licensed under the [GNU AGPLv3 License](LICENSE).
 
 ![image](https://github.com/user-attachments/assets/1f2207f1-99b7-4c56-ac09-f60c21482c58)
 ---
-
-### profile.html có mẫu sẵn dựa trên đó viết thông tin cá nhân vào.
-![image](https://github.com/user-attachments/assets/1670c7d4-da61-498f-892c-c43d4179fadf)
----
