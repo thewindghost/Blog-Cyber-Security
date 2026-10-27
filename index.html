@@ -2,84 +2,90 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8" />
-      <link rel="icon" href="/images/favicon.ico" />
-      <title>Security Researcher Blog</title>
-      <link id="themeStylesheet" rel="stylesheet" href="/style/cyber.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+      <link rel="icon" href="images/favicon.ico" />
+      <title>Security Research Blog</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+      <link id="themeStylesheet" rel="stylesheet" href="style/light.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+      <!--
+        Optional: Google Analytics. Replace G-XXXXXXXXXX with your own
+        tracking ID (or delete this whole <script> + the one below it if
+        you don't want analytics). See README.md.
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+      </script>
+      -->
    </head>
    <body>
-      <!--header-->
-      <header
-         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em; flex-wrap: wrap; gap: 1em;">
-         <nav style="display: flex; gap: 1em; font-weight: bold;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="🇻🇳" width="40" height="30" style="vertical-align: middle;" />
-            <a href="/">TheWindGhost</a>
-            <a href="/profile.html">Profile</a>
-            <a href="/images/cv-longtruong.pdf" target="_blank">Resume</a>
-            <a href="mailto:longbinhquoitay8@gmail.com">Contact</a>
-            <a href="https://www.linkedin.com/in/thewindghost" target="_blank">Linkedin</a>
-            <a href="https://github.com/thewindghost" target="_blank">GitHub</a>
-         </nav>
-         <!--chỉnh nút chuyển đổi-->
-         <div style="display: flex; gap: 0.5em;">
-            <!--nút toàn màn hình-->
-            <button id="toggleWidthBtn" style="display: none;">🖥️ Full Screen</button>
-            <!--chỉnh giao diện-->
-            <button onclick="switchTheme('/style/hacker.css')">💻 Hacker Style</button>
-            <button onclick="switchTheme('/style/cyber.css')">🛡 Cyber Security Style</button>
-         </div>
+      <!-- Site header: brand + nav links -->
+      <header>
+          <div class="header-brand">
+              <a href="./" class="header-title"><span class="header-title-path">~/yourname</span>$</a>
+          </div>
+          <nav class="header-nav">
+              <a href="images/resume.pdf" target="_blank">resume</a>
+              <a href="mailto:you@example.com">contact</a>
+              <a href="https://www.linkedin.com/in/yourname" target="_blank">linkedin</a>
+              <a href="https://github.com/yourname" target="_blank">github</a>
+              <button id="toggleWidthBtn" style="display:none;">Full Screen</button>
+          </nav>
       </header>
-      <!--ẩn tables of contents-->
+      <!-- Table of contents + post content (hidden until a post is open) -->
       <div class="site-container">
          <aside id="toc" style="display: none;">
             <h2>Table of Contents</h2>
             <ul></ul>
          </aside>
-         <!--ẩn post time với markdown content-->
+         <!-- Post metadata card + rendered markdown content -->
          <main style="display: none;">
-            <div id="post-time" style="display:none; font-size: 0.9em; color: #888; margin-bottom: 1em;"></div>
+            <div id="post-time" style="display:none; font-size: 0.9em; color: var(--dark-text-dim); margin-bottom: 1em;"></div>
             <div id="markdown-content"></div>
          </main>
       </div>
-      <!--chổ chỉnh sửa list-->
+      <!-- Homepage: hero, featured posts, and category listings (JS-rendered) -->
       <div class="section-container">
-         <section>
-            <h2>My CVE Reports</h2>
-            <ul id="cve-list"></ul>
+         <section class="hero">
+            <p class="hero-cmd"><b>$</b> whoami</p>
+            <h1 class="hero-title">Your Name</h1>
+            <p class="hero-role">Your Role · Your Specialty · Your Focus</p>
+            <p class="hero-stats" id="heroStats">Published: &hellip;</p>
+            <div class="filter-controls">
+               <button class="filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterBar" style="display:none;">
+                  <span>Filter by tag</span>
+                  <span class="filter-count" id="filterCount"></span>
+                  <span class="chevron">&#9662;</span>
+               </button>
+               <button class="filter-clear" id="filterClear" style="display:none;" title="Clear all selected tags">Clear</button>
+               <button class="filter-copy" id="filterCopy" style="display:none;" title="Copy a link to this filter">Copy link</button>
+            </div>
+            <div class="filter-bar" id="filterBar" hidden></div>
          </section>
-         <section>
-            <h2>Bug Bounty</h2>
-            <ul id="bugbounty-list"></ul>
-         </section>
-         <section>
-            <h2>Private Programs</h2>
-            <ul id="privateprogram-list"></ul>
-         </section>
-         <section>
-            <h2>Direct Collaborations</h2>
-            <ul id="directcollab-list"></ul>
+         <section class="featured-section" id="featuredSection" style="display:none;">
+            <div class="head">// <b>featured</b></div>
+            <div class="featured-grid" id="featuredGrid"></div>
          </section>
       </div>
-      <!--con trỏ chạy về đầu post-->
+      <!-- Scroll-to-top button -->
       <button id="scrollToTop" onclick="scrollToTop()"
-         style="display:none;position:fixed;bottom:20px;right:20px;padding:0.5em 1em;font-size:1em;background:#007acc;color:#fff;border:none;border-radius:5px;cursor:pointer;">
+         style="display:none;position:fixed;bottom:20px;right:20px;padding:0.5em 1em;font-size:0.85em;font-family:'JetBrains Mono',monospace;background:#39d98a;color:#0a0e14;font-weight:600;border:none;border-radius:5px;cursor:pointer;">
       ↑ Top
       </button>
-      <!--Back Về Home-->
-      <button id="backHome" onclick="location.href='/'"
-         style="display:none;position:fixed;bottom:20px;left:20px;padding:0.5em 1em;font-size:1em;background:#444;color:#fff;border:none;border-radius:5px;cursor:pointer;">
+      <!-- Back-to-home button (shown while viewing a post) -->
+      <button id="backHome" onclick="location.href='./'"
+         style="display:none;position:fixed;bottom:20px;left:20px;padding:0.5em 1em;font-size:0.85em;font-family:'JetBrains Mono',monospace;background:#10171f;color:#c7d2db;border:1px solid #1d2b36;border-radius:5px;cursor:pointer;">
       ← Back Home
       </button>
-      <!-- footer id của Read More-->
-      <footer id="footer" style="display: none;"></footer>
-      <footer class="site-footer">
-         <p>© 2025 <a href="https://github.com/thewindghost">TheWindGhost</a> <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="🇻🇳" width="30" height="25" style="vertical-align: middle;" /> . All rights reserved.</p>
-         <p>Focused on Bug Bounty, CVEs & Cybersecurity Research.</p>
+      <footer>
+          <p class="footer-copy">© <script>document.write(new Date().getFullYear());</script> All rights reserved <strong>Your Name</strong> · Bug Bounty, CVEs &amp; Cyber Security Research</p>
       </footer>
-      <!--Script markdown, chỉnh màu python vv...-->
-      <script src="/script/components-index.js"></script>
-      <script src="/script/script-index.js"></script>
+      <!-- App scripts: library loader, markdown/TOC/filter rendering -->
+      <script src="script/main-init.js"></script>
+      <script src="script/script-index.js"></script>
    </body>
 </html>
-
-
